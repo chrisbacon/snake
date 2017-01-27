@@ -14,11 +14,8 @@ var Snake = function(startingPoint, length, segmentSize) {
 
 Snake.prototype = {
     changeposition: function(delta) {
-        for (var i=this.position.length-1; i > 0; i--) {
-            this.position[i].x = this.position[i-1].x;
-            this.position[i].y = this.position[i-1].y;
-        }
-        this.position[0] = this.position[0].add(delta);
+        this.position.pop();
+        this.position.unshift(this.position[0].add(delta));
     },
 
     setDirection: function(direction) {
