@@ -26,11 +26,15 @@ window.onload = function() {
     var view = new View(canvas, segmentSize);
     snake = new Snake(startingPoint, length, segmentSize);
     var button = document.querySelector('button');
+    var game = new Game(snake, canvas.width, canvas.height);
 
     var draw = function() {
         view.draw(snake);
         snake.move();
-        window.requestAnimationFrame(draw)
+        game.checkInBounds();
+        if (game.running) {
+            window.requestAnimationFrame(draw)
+        }
     };
 
     canvas.onkeydown = function(event) {
@@ -41,8 +45,13 @@ window.onload = function() {
     button.onclick = function() {
         view.reset();
         snake = new Snake(startingPoint, length, segmentSize);
+        game = new Game(snake, canvas.width, canvas.height);
+        canvas.focus();
     };
 
+    canvas.onfocus = function() {
+        window.requestAnimationFrame(draw);
+    }
 
-    window.requestAnimationFrame(draw);
+    canvas.focus();
 }
