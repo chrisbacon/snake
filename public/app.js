@@ -1,9 +1,7 @@
 var segmentSize = 2;
-var canvas;
 var snake;
 
 var handleKeyPress = function(key) {
-
     switch (key) {
       case "w":
         snake.setDirection("up");
@@ -31,7 +29,7 @@ window.onload = function() {
         view.draw(snake);
         snake.move();
         window.requestAnimationFrame(draw)
-    }
+    };
 
     canvas.onkeydown = function(event) {
         handleKeyPress(event.key);
