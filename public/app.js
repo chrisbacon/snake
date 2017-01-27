@@ -1,4 +1,6 @@
-var segmentSize = 2;
+var segmentSize = 4;
+var startingPoint = new Point(30, 30)
+var length = 20;
 var snake;
 
 var handleKeyPress = function(key) {
@@ -22,7 +24,7 @@ var handleKeyPress = function(key) {
 window.onload = function() {
     canvas = document.querySelector('canvas');
     var view = new View(canvas, segmentSize);
-    snake = new Snake(segmentSize);
+    snake = new Snake(startingPoint, length, segmentSize);
     var button = document.querySelector('button');
 
     var draw = function() {
@@ -38,7 +40,7 @@ window.onload = function() {
 
     button.onclick = function() {
         view.reset();
-        snake = new Snake(segmentSize);
+        snake = new Snake(startingPoint, length, segmentSize);
     };
 
 

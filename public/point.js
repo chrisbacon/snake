@@ -6,10 +6,7 @@ var Point = function(x, y) {
 Point.prototype = {
 
     add: function(point) {
-        this.x += point.x;
-        this.y += point.y;
-
-        return this;
+        return new Point(this.x + point.x, this.y + point.y);
     }
 
 }
