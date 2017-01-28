@@ -1,6 +1,6 @@
 var segmentSize = 4;
 var startingPoint = new Point(30, 30)
-var length = 20;
+var length = 40;
 var snake;
 
 var handleKeyPress = function(key) {
@@ -31,6 +31,7 @@ window.onload = function() {
     var draw = function() {
         view.draw(snake);
         snake.move();
+        game.checkForCrossing();
         game.checkInBounds();
         if (game.running) {
             window.requestAnimationFrame(draw)

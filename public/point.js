@@ -7,6 +7,10 @@ Point.prototype = {
 
     add: function(point) {
         return new Point(this.x + point.x, this.y + point.y);
+    },
+
+    equals: function(point) {
+        return (this.x == point.x && this.y == point.y)
     }
 
 }

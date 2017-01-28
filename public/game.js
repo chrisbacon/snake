@@ -2,7 +2,7 @@ var Game = function(snake, width, height) {
     this.snake = snake;
     this.width = width;
     this.height = height;
-    this.running = true
+    this.running = true;
 }
 
 Game.prototype = {
@@ -17,6 +17,16 @@ Game.prototype = {
 
         if (xOutBounds || yOutBounds) {
             this.running = false;
+        }
+    },
+
+    checkForCrossing: function() {
+        var head = this.snake.position[0]
+        for (var i=3; i<this.snake.position.length; i++) {
+            if(head.equals(this.snake.position[i])) {
+                this.running = false;
+                break;
+            }
         }
     },
 
