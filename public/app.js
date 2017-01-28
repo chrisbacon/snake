@@ -2,20 +2,22 @@ var segmentSize = 4;
 var startingPoint = new Point(30, 30)
 var length = 40;
 var snake;
+var fps = 30;
+var direction;
 
 var handleKeyPress = function(key) {
     switch (key) {
       case "w":
-        snake.setDirection("up");
+        direction = "up";
         break;
       case "s":
-        snake.setDirection("down");
+        direction = "down";
         break;
       case "a":
-        snake.setDirection("left");
+        direction = "left";
         break;
       case "d":
-        snake.setDirection("right");
+        direction = "right";
         break;
     }
 }
@@ -29,13 +31,16 @@ window.onload = function() {
     var game = new Game(snake, canvas.width, canvas.height);
 
     var draw = function() {
-        view.draw(snake);
-        snake.move();
-        game.checkForCrossing();
-        game.checkInBounds();
-        if (game.running) {
-            window.requestAnimationFrame(draw)
-        }
+        setTimeout(function() {
+            view.draw(snake);
+            snake.setDirection(direction)
+            snake.move();
+            game.checkForCrossing();
+            game.checkInBounds();
+            if (game.running) {
+                window.requestAnimationFrame(draw)
+            }
+        }, 1000 / fps);
     };
 
     canvas.onkeydown = function(event) {
