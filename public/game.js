@@ -12,8 +12,8 @@ Game.prototype = {
         var xPosition = this.snake.position[0].x;
         var yPosition = this.snake.position[0].y;
 
-        var xOutBounds = (xPosition < 0) || (xPosition > this.width);
-        var yOutBounds = (yPosition < 0) || (yPosition > this.height);
+        var xOutBounds = (xPosition < 0) || (xPosition >= this.width-1);
+        var yOutBounds = (yPosition < 0) || (yPosition >= this.height-1);
 
         if (xOutBounds || yOutBounds) {
             this.running = false;

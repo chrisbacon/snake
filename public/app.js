@@ -1,7 +1,7 @@
 var segmentSize = 4;
-var startingPoint = new Point(30, 30)
-var length = 40;
-var fps = 10;
+var startingPoint = new Point(80, 120)
+var length = 10;
+var fps = 15;
 
 var view;
 var snake;
@@ -17,14 +17,16 @@ var init = function() {
 
 var draw = function() {
     setTimeout(function() {
-        view.draw(snake);
-        snake.setDirection(view.getDirection());
-        snake.move();
-        game.checkForCrossing();
-        game.checkInBounds();
         if (game.running) {
+            view.draw(snake);
+
+            snake.setDirection(view.getDirection());
+            snake.move();
+
+            game.checkForCrossing();
+            game.checkInBounds();
+        
             frameID = window.requestAnimationFrame(draw)
-            console.log(frameID, snake.position[0].x)
         }
     }, 1000 / fps);
 };

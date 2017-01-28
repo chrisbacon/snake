@@ -1,13 +1,14 @@
 var View = function(canvas, segmentSize) {
     this.canvas = canvas;
     this.context = canvas.getContext('2d');
+    this.context.scale(2,2);
     this.segment = this.context.createImageData(segmentSize, segmentSize);
     this.segment.data.forEach(function(element, index) {
         if ((index + 1) % 4 == 0) {
             this.segment.data[index] = 255
         }
     }.bind(this));
-    this.direction = "right";
+    this.direction = "up";
 }
 
 View.prototype = {
