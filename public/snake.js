@@ -50,16 +50,16 @@ Snake.prototype = {
     move() {
         switch (this.direction) {
           case "up":
-            snake.changeposition(new Point(0, -this.segmentSize));
+            this.changeposition(new Point(0, -this.segmentSize));
             break;
           case "down":
-            snake.changeposition(new Point(0, this.segmentSize));
+            this.changeposition(new Point(0, this.segmentSize));
             break;
           case "left":
-            snake.changeposition(new Point(-this.segmentSize, 0));
+            this.changeposition(new Point(-this.segmentSize, 0));
             break;
           case "right":
-            snake.changeposition(new Point(this.segmentSize, 0));
+            this.changeposition(new Point(this.segmentSize, 0));
             break;
         }
     }

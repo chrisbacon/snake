@@ -7,6 +7,7 @@ var View = function(canvas, segmentSize) {
             this.segment.data[index] = 255
         }
     }.bind(this));
+    this.direction = "right";
 }
 
 View.prototype = {
@@ -16,6 +17,27 @@ View.prototype = {
         snake.position.forEach(function(point) {
             this.context.putImageData(this.segment, point.x, point.y); 
         }.bind(this));
+    },
+
+    handleKeyPress: function(key) {
+        switch (key) {
+          case "w":
+            this.direction = "up";
+            break;
+          case "s":
+            this.direction = "down";
+            break;
+          case "a":
+            this.direction = "left";
+            break;
+          case "d":
+            this.direction = "right";
+            break;
+        }
+    },
+
+    getDirection: function() {
+        return this.direction;
     },
 
     reset: function() {
