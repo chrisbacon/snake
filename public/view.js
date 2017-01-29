@@ -20,10 +20,8 @@ View.prototype = {
         }.bind(this));
     },
 
-    drawGems: function(gems) {
-        gems.forEach(function(gem) {
-            this.context.putImageData(this.segment, gem.position.x, gem.position.y)
-        }.bind(this));
+    drawGem: function(gem) {
+        this.context.putImageData(this.segment, gem.position.x, gem.position.y);
     },
 
     handleKeyPress: function(key) {

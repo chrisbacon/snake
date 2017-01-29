@@ -32,12 +32,10 @@ Game.prototype = {
     },
 
     checkForEat: function() {
-        this.gemController.getGems().forEach(function(gem, index) {
-            if (gem.position.equals(snake.getHead())) {
-                this.snake.addSegment();
-                this.gemController.getGems().splice(index, 1);
-            }
-        })
+        if (this.gemController.getGem().position.equals(snake.getHead())) {
+            this.snake.addSegment();
+            this.gemController.createGem();
+        }
     },
 
     reset: function() {

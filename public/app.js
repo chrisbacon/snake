@@ -1,7 +1,14 @@
 var segmentSize = 4;
-var startingPoint = new Point(80, 120)
+
+var n = 20;
+var start = n/2;
+
 var length = 10;
-var fps = 15;
+var fps = 8;
+var width = n*segmentSize;
+var height = n*segmentSize;
+
+var startingPoint = new Point(start*width/n , start*height/n)
 
 var view;
 var snake;
@@ -22,12 +29,8 @@ var draw = function() {
     setTimeout(function() {
         if (game.running) {
 
-            if (game.timeToCreateGem()) {
-                gemController.createGem();
-            }
-
             view.reset();
-            view.drawGems(gemController.getGems());    
+            view.drawGem(gemController.getGem());    
             view.drawSnake(snake);
 
             snake.setDirection(view.getDirection());
@@ -45,6 +48,8 @@ var draw = function() {
 
 window.onload = function() {
     canvas = document.querySelector('canvas');
+    canvas.height = height;
+    canvas.width = width;
     var button = document.querySelector('button');
     init();
 

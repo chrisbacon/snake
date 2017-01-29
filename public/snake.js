@@ -1,7 +1,8 @@
-var Snake = function(startingPoint, length, segmentSize) {
+var Snake = function(startingPoint, length, segmentSize, pixelLog) {
     this.position = new Array(length-1);
 
     this.position[0] = startingPoint;
+    this.pixelLog = pixelLog;
     
     var delta = new Point(0, segmentSize);
 
@@ -14,7 +15,8 @@ var Snake = function(startingPoint, length, segmentSize) {
 
 Snake.prototype = {
     changeposition: function(delta) {
-        this.position.pop();
+        var end = this.position.pop();
+        this.pixelLog.returnPixel(end);
         this.position.unshift(this.position[0].add(delta));
     },
 
