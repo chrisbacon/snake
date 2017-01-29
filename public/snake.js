@@ -8,6 +8,7 @@ var Snake = function(startingPoint, length, segmentSize, pixelLog) {
 
     for (var i=1; i<length-1; i++) {
         this.position[i] = (this.position[i-1]).add(delta);
+        this.pixelLog.removePixel(this.position[i]);
     }
     this.segmentSize = segmentSize;
     this.direction = 'right'
@@ -17,7 +18,9 @@ Snake.prototype = {
     changeposition: function(delta) {
         var end = this.position.pop();
         this.pixelLog.returnPixel(end);
-        this.position.unshift(this.position[0].add(delta));
+        var newHead = this.position[0].add(delta);
+        this.position.unshift(newHead);
+        this.pixelLog.removePixel(newHead);
     },
 
     getHead: function() {

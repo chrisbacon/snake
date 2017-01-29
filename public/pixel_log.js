@@ -16,5 +16,13 @@ PixelLog.prototype = {
 
     returnPixel: function(point) {
         this.emptyPixels.push(point)
+    },
+
+    removePixel: function(point) {
+        this.emptyPixels.forEach(function(pixel, index, emptyPixels) {
+            if(point.equals(pixel)) {
+                emptyPixels.splice(index, 1);
+            }
+        })
     }
 }
