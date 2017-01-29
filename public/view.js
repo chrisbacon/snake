@@ -13,10 +13,16 @@ var View = function(canvas, segmentSize) {
 
 View.prototype = {
 
-    draw: function(snake) {
-        this.reset();
+    drawSnake: function(snake) {
+        
         snake.position.forEach(function(point) {
             this.context.putImageData(this.segment, point.x, point.y); 
+        }.bind(this));
+    },
+
+    drawGems: function(gems) {
+        gems.forEach(function(gem) {
+            this.context.putImageData(this.segment, gem.position.x, gem.position.y)
         }.bind(this));
     },
 

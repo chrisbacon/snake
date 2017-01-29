@@ -18,6 +18,10 @@ Snake.prototype = {
         this.position.unshift(this.position[0].add(delta));
     },
 
+    getHead: function() {
+        return this.position[0];
+    },
+
     setDirection: function(direction) {
         switch (direction) {
           case "up":
@@ -62,5 +66,12 @@ Snake.prototype = {
             this.changeposition(new Point(this.segmentSize, 0));
             break;
         }
+    },
+
+    addSegment() {
+        var l = this.position.length-1;
+        var delta = this.position[l-1].subtract(this.position[l]);
+
+        this.position.push(this.position[l].add(delta));
     }
 }

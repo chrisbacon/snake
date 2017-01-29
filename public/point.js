@@ -10,7 +10,11 @@ Point.prototype = {
     },
 
     equals: function(point) {
-        return (this.x == point.x && this.y == point.y)
+        return (this.x == point.x && this.y == point.y);
+    },
+
+    subtract: function(point) {
+        return new Point(this.x - point.x, this.y - point.y);
     }
 
 }
