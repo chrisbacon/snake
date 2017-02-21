@@ -1,2 +1,2 @@
 # snake
-My attempt to build Snake. Created with Javascript and the HTML5 Canvas. 
+My attempt at recreating Snake with Javascript and the HTML5 Canvas. 
